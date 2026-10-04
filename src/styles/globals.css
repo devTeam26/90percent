@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand palette — taken from the 90percent logo (sage on white) */
+@layer base {
+  :root {
+    --background: 160 15% 97%;   /* #F7FAF9 */
+    --foreground: 164 25% 14%;   /* #1C2B28 */
+    --card: 0 0% 100%;
+    --card-foreground: 164 25% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 164 25% 14%;
+    --primary: 165 18% 61%;      /* #8BADA4 logo sage */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 164 12% 92%;
+    --secondary-foreground: 164 25% 20%;
+    --muted: 164 10% 91%;
+    --muted-foreground: 164 12% 42%;
+    --accent: 164 12% 90%;
+    --accent-foreground: 164 25% 15%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 164 15% 86%;
+    --input: 164 15% 86%;
+    --ring: 165 18% 61%;
+    --radius: 1rem;
+  }
+  .dark {
+    --background: 164 25% 8%;
+    --foreground: 0 0% 95%;
+    --card: 164 22% 11%;
+    --card-foreground: 0 0% 95%;
+    --popover: 164 22% 11%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 165 18% 61%;
+    --primary-foreground: 164 25% 10%;
+    --secondary: 164 18% 15%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 164 18% 15%;
+    --muted-foreground: 164 12% 50%;
+    --accent: 164 18% 18%;
+    --accent-foreground: 0 0% 85%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 164 20% 16%;
+    --input: 164 20% 16%;
+    --ring: 165 18% 61%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-sans antialiased; overflow-x: clip; }
+  html { scroll-behavior: auto; }
+  ::selection { background: #8BADA4; color: #fff; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #F7FAF9; }
+  ::-webkit-scrollbar-thumb { background: #8BADA4; border-radius: 99px; }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+  .cursor-none-custom, .cursor-none-custom * { cursor: none !important; }
+
+  .text-gradient-sage, .text-gradient-orange, .text-gradient {
+    background: linear-gradient(135deg, #8BADA4 0%, #6E9690 50%, #3D6862 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-outline-sage { -webkit-text-stroke: 1.5px #8BADA4; color: transparent; }
+  .text-outline-dark { -webkit-text-stroke: 1.5px rgba(28,43,40,0.18); color: transparent; }
+
+  .glass-light {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(139,173,164,0.22);
+  }
+  .glass-dark {
+    background: rgba(28,43,40,0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .shadow-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05); }
+  .shadow-card-hover { box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06); }
+  .glow-sage, .glow-orange { box-shadow: 0 0 40px rgba(139,173,164,0.25), 0 0 80px rgba(139,173,164,0.08); }
+  .glow-sage-sm, .glow-orange-sm { box-shadow: 0 0 20px rgba(139,173,164,0.2); }
+
+  /* Faint engineering grid used as section background */
+  .bg-grid-sage {
+    background-image:
+      linear-gradient(rgba(139,173,164,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139,173,164,0.12) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+@keyframes marquee       { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+@keyframes marquee-rev   { from { transform: translateX(-50%) } to { transform: translateX(0) } }
+@keyframes float-slow    { 0%,100% { transform: translateY(0) rotate(-1deg) } 50% { transform: translateY(-18px) rotate(1deg) } }
+@keyframes spin-slow     { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+@keyframes glow-pulse    { 0%,100% { opacity:.25 } 50% { opacity:.6 } }
+@keyframes beam          { 0% { transform:translateX(-100%) } 100% { transform:translateX(400%) } }
+@keyframes fade-in       { from { opacity:0;transform:translateY(10px) } to { opacity:1;transform:none } }
+@keyframes fadeInUp      { from { opacity:0;transform:translateY(28px) } to { opacity:1;transform:none } }
+@keyframes morph {
+  0%,100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+  33%     { border-radius: 63% 37% 41% 59% / 57% 61% 39% 43%; }
+  66%     { border-radius: 38% 62% 55% 45% / 62% 35% 65% 38%; }
+}
+@keyframes eq-bar { 0%,100% { transform: scaleY(.25) } 50% { transform: scaleY(1) } }
+
+.animate-marquee     { animation: marquee 30s linear infinite; }
+.animate-marquee-rev { animation: marquee-rev 30s linear infinite; }
+.animate-float-slow  { animation: float-slow 7s ease-in-out infinite; }
+.animate-spin-slow   { animation: spin-slow 24s linear infinite; }
+.animate-glow-pulse  { animation: glow-pulse 2.5s ease-in-out infinite; }
+.animate-beam        { animation: beam 2.5s ease-in-out infinite; }
+.animate-fade-in     { animation: fade-in 0.5s ease-out both; }
+.animate-morph       { animation: morph 14s ease-in-out infinite; }
+.gaming-card         { animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* Fill-wipe button: a circle of colour grows from where the cursor enters */
+.wipe-btn { position: relative; overflow: hidden; isolation: isolate; }
+.wipe-btn .wipe {
+  position: absolute; z-index: -1; width: 0; height: 0; border-radius: 50%;
+  left: var(--wx, 50%); top: var(--wy, 50%); transform: translate(-50%, -50%);
+  transition: width .6s cubic-bezier(.16,1,.3,1), padding-bottom .6s cubic-bezier(.16,1,.3,1);
+}
+.wipe-btn:hover .wipe { width: 260%; height: 0; padding-bottom: 260%; }
+.wipe-btn .arrow { transition: transform .4s cubic-bezier(.16,1,.3,1); }
+.wipe-btn:hover .arrow { transform: translateX(4px) rotate(-45deg); }
+
+.clip-wrap  { overflow: hidden; }
+.clip-inner { display: block; will-change: transform; }
+
+img { transition: opacity 0.3s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}

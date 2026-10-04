@@ -1,0 +1,18 @@
+node_modules
+dist
+.env
+.env.local
+.DS_Store
+*.log
+.vite
+coverage
+*.psd
+
+# Large binary assets – keep locally, don't push
+src/assets/**/*.png
+src/assets/**/*.jpg
+src/assets/**/*.jpeg
+src/assets/**/*.webp
+src/assets/**/*.gif
+src/assets/**/*.PNG
+src/assets/**/*.JPG
